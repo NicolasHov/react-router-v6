@@ -1,5 +1,5 @@
 import { Form, useLoaderData, redirect, useNavigate } from "react-router-dom";
-import { updateContact, getContact } from "../contact.js";
+import { updateContact, getContact } from "../contacts.js";
 
 export async function loader({ params }) {
     const contact = await getContact(params.contactId);
