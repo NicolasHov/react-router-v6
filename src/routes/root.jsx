@@ -1,6 +1,8 @@
 import { useEffect } from "react";
 import { Outlet, Link, useLoaderData, Form, useNavigation, useSubmit } from "react-router-dom";
 import { getContacts, createContact } from "../contacts.js";
+import HotelIcon from '@mui/icons-material/Hotel';
+import FlightTakeoffIcon from '@mui/icons-material/FlightTakeoff';
 
 export async function loader({ request }) {
     const url = new URL(request.url);
@@ -32,13 +34,13 @@ export default function Root() {
     return (
         <>
             <div id="sidebar">
-                <h1>React Router Contacts</h1>
+                <h1><HotelIcon/><strong>_______<em>Dreams__Generator__</em></strong><FlightTakeoffIcon/></h1>
                 <div>
                     <form id="search-form" role="search">
                         <input
                             id="q"
                             className={searching ? "loading" : ""}
-                            aria-label="Search contacts"
+                            aria-label="Search dreams"
                             placeholder="Search"
                             type="search"
                             name="q"
@@ -70,12 +72,12 @@ export default function Root() {
                             {contacts.map((contact) => (
                                 <li key={contact.id}>
                                     <Link to={`contacts/${contact.id}`}>
-                                        {contact.first || contact.last ? (
+                                        {contact.mastodon || contact.last ? (
                                             <>
-                                                {contact.first} {contact.last}
+                                                {contact.mastodon} {contact.last}
                                             </>
                                         ) : (
-                                            <i>No Name</i>
+                                            <i>No Dream</i>
                                         )}{" "}
                                         {contact.favorite && <span>★</span>}
                                     </Link>
@@ -84,7 +86,7 @@ export default function Root() {
                         </ul>
                     ) : (
                         <p>
-                            <i>No contacts</i>
+                            <i>No dreams</i>
                         </p>
                     )}
                 </nav>
